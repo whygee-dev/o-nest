@@ -1,0 +1,13 @@
+@use "../styles/colors.scss";
+
+.container {
+  header {
+    background-color: colors.$dark-secondary;
+  }
+
+  main {
+    .hero {
+      background-color: colors.$dark-primary;
+    }
+  }
+}
