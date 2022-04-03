@@ -8,7 +8,7 @@ const Header = () => {
     <header className={styles.header}>
       <Image src="/images/onest-logo.png" alt="O'nest Logo" layout="fixed" width="80" height="61" />
 
-      <DownloadButtons></DownloadButtons>
+      <DownloadButtons responsive></DownloadButtons>
     </header>
   );
 };

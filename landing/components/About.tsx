@@ -34,7 +34,9 @@ const Card = ({ title, description }: { title: string; description: string }) =>
 const About = () => {
   return (
     <div className={styles.about}>
-      <Image src="/images/mobile-screenshot.png" alt="Mobile screenshot" layout="fixed" width="550" height="875"></Image>
+      <div className={styles.responsiveImage}>
+        <Image src="/images/mobile-screenshot.png" alt="Mobile screenshot" layout="responsive" width="550" height="875"></Image>
+      </div>
 
       <div className={styles.rightContent}>
         <h1>Lorem ipsum dolor</h1>

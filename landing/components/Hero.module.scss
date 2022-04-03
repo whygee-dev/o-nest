@@ -15,7 +15,7 @@
     justify-content: center;
     position: relative;
     z-index: 2;
-    width: 35%;
+    width: 450px;
 
     h1 {
       text-align: center;
@@ -23,6 +23,7 @@
       line-height: 70px;
       margin-bottom: 30px;
       font-weight: 400;
+      white-space: nowrap;
     }
 
     p {
@@ -50,5 +51,33 @@
 
   .catContainer {
     right: 10px;
+    top: 30px;
+  }
+
+  @media (max-width: 1300px) {
+    .dogContainer {
+      top: 5px;
+    }
+
+    .catContainer {
+      top: 70px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .textContainer {
+      h1 {
+        font-size: clamp(45px, 3vw, 64px);
+      }
+    }
+
+    .dogContainer {
+      display: none;
+    }
+
+    .catContainer {
+      top: 20%;
+      right: 0;
+    }
   }
 }

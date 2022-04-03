@@ -77,14 +77,13 @@ const Testimonial = ({
 const Testimonials = () => {
   return (
     <div className={styles.testimonials}>
-      {testiomonials.map((t) => {
-        return <Testimonial {...t} key={t.fullname} />;
-      })}
-
       <div className={styles.centerTitle}>
         <h1>Ils parlent de nous</h1>
         <BlobSvg></BlobSvg>
       </div>
+      {testiomonials.map((t) => {
+        return <Testimonial {...t} key={t.fullname} />;
+      })}
     </div>
   );
 };

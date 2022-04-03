@@ -2,8 +2,11 @@ import React from "react";
 import DownloadButtons from "./DownloadButtons";
 import Image from "next/image";
 import styles from "./Hero.module.scss";
+import { useWindowSize } from "usehooks-ts";
 
 const Hero = () => {
+  const { width } = useWindowSize();
+
   return (
     <div className={styles.hero}>
       <div className={styles.textContainer}>
@@ -25,7 +28,11 @@ const Hero = () => {
       </div>
 
       <div className={styles.catContainer}>
-        <Image src="/images/cat-pattern.svg" alt="Illustration chat" layout="fixed" width="800" height="965" />
+        {width > 1024 ? (
+          <Image src="/images/cat-pattern.svg" alt="Illustration chat" layout="fixed" width="800" height="965" />
+        ) : (
+          <Image src="/images/cat-pattern.svg" alt="Illustration chat" layout="fixed" width="500" height="665" />
+        )}
       </div>
     </div>
   );
