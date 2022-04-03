@@ -50,4 +50,14 @@
       background-color: lighten(colors.$dark-primary, 8%);
     }
   }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+    button {
+      width: 225px;
+    }
+  }
 }
