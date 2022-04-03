@@ -1,0 +1,45 @@
+@use "../styles/colors.scss";
+
+.separator {
+  height: 80%;
+  width: 1px;
+  background-color: colors.$dark-primary;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: colors.$dark-secondary;
+  height: 300px;
+
+  .contact {
+    display: flex;
+
+    .text {
+      margin-left: 30px;
+
+      h4 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .buttonsContainer {
+    width: 225px;
+
+    button {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+
+  .socialMedias {
+    > div {
+      > span {
+        margin: 10px !important;
+      }
+    }
+  }
+}

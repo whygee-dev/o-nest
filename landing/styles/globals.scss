@@ -1,6 +1,32 @@
+@use "./colors.scss";
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Balsamiq Sans", cursive;
+}
+
+body,
+html {
+  color: white;
+  scrollbar-width: thin;
+  scrollbar-color: colors.$dark-primary colors.$white;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar {
+    width: 1em;
+    background-color: colors.$white;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 10%);
+  }
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-thumb {
+    background-color: colors.$dark-secondary;
+    outline: none;
+  }
 }

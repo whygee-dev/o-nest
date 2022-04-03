@@ -1,18 +1,23 @@
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.scss";
+import About from "../components/About";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import Testimonials from "../components/Testimonials";
+import styles from "./Index.module.scss";
 
 const Home: NextPage = () => {
   return (
     <section className={styles.container}>
-      <header></header>
+      <Header></Header>
 
       <main>
-        <div className={styles.hero}>
-          <h1>Votre animal de companie accompagné</h1>
-        </div>
+        <Hero></Hero>
+        <About></About>
+        <Testimonials></Testimonials>
       </main>
 
-      <footer></footer>
+      <Footer></Footer>
     </section>
   );
 };

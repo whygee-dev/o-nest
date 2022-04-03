@@ -1,0 +1,41 @@
+@use "../styles/colors";
+
+.downloadButtons {
+  display: flex;
+  flex-wrap: wrap;
+
+  button {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 60px;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    margin: 0 5px;
+    font-weight: 400;
+    transition: 0.3s all;
+
+    > span {
+      margin-right: 5px !important;
+    }
+  }
+
+  .appleStore {
+    background-color: colors.$white;
+    color: colors.$dark-primary;
+
+    &:hover {
+      background-color: darken(colors.$white, 25%);
+    }
+  }
+
+  .playStore {
+    color: colors.$white;
+    background-color: colors.$black;
+
+    &:hover {
+      background-color: lighten(colors.$dark-primary, 8%);
+    }
+  }
+}

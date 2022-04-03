@@ -1,0 +1,54 @@
+@use "../styles/colors.scss";
+
+.hero {
+  background-color: colors.$dark-primary;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .textContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    width: 35%;
+
+    h1 {
+      text-align: center;
+      font-size: 84px;
+      line-height: 70px;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    p {
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+    }
+
+    > span {
+      margin: 40px 0 !important;
+    }
+  }
+
+  height: 1000px;
+
+  .catContainer,
+  .dogContainer {
+    position: absolute;
+    top: 10px;
+    z-index: 0;
+  }
+
+  .dogContainer {
+    left: 10px;
+  }
+
+  .catContainer {
+    right: 10px;
+  }
+}

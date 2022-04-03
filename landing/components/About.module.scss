@@ -1,0 +1,58 @@
+@use "../styles/colors.scss";
+
+.about {
+  display: flex;
+  background-color: colors.$dark-secondary;
+  position: relative;
+  height: 550px;
+
+  h1 {
+    font-size: 85px;
+  }
+
+  > span {
+    position: absolute;
+    top: -200px;
+    z-index: 3;
+  }
+
+  .rightContent {
+    width: 65%;
+    padding: 30px 0;
+
+    .cards {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+
+      .card {
+        background-color: colors.$dark-primary;
+        border-radius: 25px;
+        padding: 30px 40px 30px;
+        width: 30%;
+        position: relative;
+        z-index: 2;
+
+        h2 {
+          font-size: 40px;
+        }
+
+        p {
+          font-size: 18px;
+          font-weight: 400;
+          font-family: "Poppins", sans-serif;
+          margin-top: 20px;
+        }
+
+        svg {
+          position: absolute;
+          right: 0;
+          bottom: -5%;
+          z-index: -1;
+          width: 39%;
+          height: 50%;
+        }
+      }
+    }
+  }
+}
