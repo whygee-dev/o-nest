@@ -33,7 +33,14 @@
   }
 
   .buttonsContainer {
+    width: 225px;
+
+    > div {
+      width: 100%;
+    }
+
     button {
+      width: 100%;
       margin: 10px 0;
     }
   }
