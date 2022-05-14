@@ -12,6 +12,7 @@ class Register extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       appBar: CustomAppBar(),
       body: Container(
         decoration: const BoxDecoration(
@@ -32,7 +33,7 @@ class Register extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
+            const Expanded(
               child: RegisterForm(),
             ),
           ],

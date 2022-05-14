@@ -18,16 +18,14 @@ class LoginForm extends StatefulWidget {
 
 class LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  static var registerTextStyle = TextStyle(
+  static var loginTextStyle = TextStyle(
     fontSize: 20,
     color: AppColors.primaryColor,
   );
 
   @override
   Widget build(BuildContext context) {
-    var padding = MediaQuery.of(context).padding;
     var window = MediaQuery.of(context).size;
-    double height = window.height - padding.top - padding.bottom;
 
     return Form(
       key: _formKey,
@@ -76,7 +74,7 @@ class LoginFormState extends State<LoginForm> {
               child: Text(
                 'Se connecter',
                 style: GoogleFonts.balsamiqSans(
-                  textStyle: registerTextStyle,
+                  textStyle: loginTextStyle,
                 ),
               ),
             ),

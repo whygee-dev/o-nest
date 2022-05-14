@@ -4,10 +4,14 @@ import 'package:vrouter/vrouter.dart';
 import '../HexColor.dart';
 
 Widget customTextField(
-    BuildContext context, IconData icon, String hint, Function validate,
-    {double? width,
-    double paddingVertical = 0.0,
-    double paddingHorizontal = 0.0}) {
+  BuildContext context,
+  IconData icon,
+  String hint,
+  Function validate, {
+  double? width,
+  double paddingVertical = 0.0,
+  double paddingHorizontal = 0.0,
+}) {
   var window = MediaQuery.of(context).size;
 
   return SizedBox(

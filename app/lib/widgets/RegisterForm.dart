@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:onest/utils/Validators.dart';
+
+import '../AppColors.dart';
+import 'CustomTextField.dart';
 
 // Define a custom Form widget.
 class RegisterForm extends StatefulWidget {
@@ -14,19 +18,24 @@ class RegisterForm extends StatefulWidget {
 class RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
 
+  static var registerTextStyle = TextStyle(
+    fontSize: 20,
+    color: AppColors.primaryColor,
+  );
+
   @override
   Widget build(BuildContext context) {
+    var window = MediaQuery.of(context).size;
+
     return Form(
       key: _formKey,
       child: Column(
         children: <Widget>[
-          TextFormField(
-            decoration: new InputDecoration.collapsed(hintText: 'Username'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Ce champs est requis';
-              }
-
+          customTextField(
+            context,
+            Icons.email,
+            "Email",
+            (String value) {
               if (!value.isValidEmail()) {
                 return 'Email invalide';
               }
@@ -34,31 +43,48 @@ class RegisterFormState extends State<RegisterForm> {
               return null;
             },
           ),
-          TextFormField(
-            obscureText: true,
-            enableSuggestions: false,
-            autocorrect: false,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Ce champs est requis';
-              }
-
+          customTextField(
+            context,
+            Icons.lock,
+            "Mot de passe",
+            (value) {
               if (value.length < 8) {
                 return 'Minimum 8 caractères';
               }
 
               return null;
             },
+            paddingVertical: 30,
           ),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Création de votre compte...')),
-                );
-              }
-            },
-            child: const Text('S\inscrire'),
+          SizedBox(
+            width: window.width / 1.15,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  Colors.white,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(60.0),
+                    side: const BorderSide(color: Colors.white54),
+                  ),
+                ),
+              ),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        content: Text('Création de votre compte...')),
+                  );
+                }
+              },
+              child: Text(
+                'S\'inscrire',
+                style: GoogleFonts.balsamiqSans(
+                  textStyle: registerTextStyle,
+                ),
+              ),
+            ),
           ),
         ],
       ),

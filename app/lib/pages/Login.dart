@@ -11,8 +11,8 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       appBar: CustomAppBar(),
       body: Container(
         decoration: const BoxDecoration(
@@ -25,15 +25,17 @@ class Login extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Expanded(
-                child: Center(
-                  child: Image.asset(
-                    "assets/logo.png",
-                    width: 200,
-                    height: 200,
-                  ),
+              child: Center(
+                child: Image.asset(
+                  "assets/logo.png",
+                  width: 250,
+                  height: 250,
                 ),
-                flex: 3),
-            const Expanded(child: LoginForm(), flex: 6),
+              ),
+            ),
+            const Expanded(
+              child: LoginForm(),
+            ),
           ],
         ),
       ),

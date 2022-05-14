@@ -29,46 +29,47 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VRouter(
-        debugShowCheckedModeBanner: false,
-        mode: VRouterMode.history,
-        title: 'O\'nest',
-        theme: ThemeData(
-          primarySwatch: AppColors.primaryColor,
-          scaffoldBackgroundColor: AppColors.primaryColor,
-          textTheme: GoogleFonts.balsamiqSansTextTheme(
-            Theme.of(context).textTheme,
-          ),
+      debugShowCheckedModeBanner: false,
+      mode: VRouterMode.history,
+      title: 'O\'nest',
+      theme: ThemeData(
+        primarySwatch: AppColors.primaryColor,
+        scaffoldBackgroundColor: AppColors.primaryColor,
+        textTheme: GoogleFonts.balsamiqSansTextTheme(
+          Theme.of(context).textTheme,
         ),
-        initialUrl: '/auth',
-        routes: [
-          VGuard(
-              beforeEnter: (vRedirector) async => !AuthHandler.isUserLoggedIn()
-                  ? vRedirector.to(Auth.route)
-                  : null,
-              stackedRoutes: [
-                VWidget(
-                  path: '/home',
-                  widget: const Home(),
-                ),
-              ]),
-          VGuard(
-              beforeEnter: (vRedirector) async => AuthHandler.isUserLoggedIn()
-                  ? vRedirector.to(Home.route)
-                  : null,
-              stackedRoutes: [
-                VWidget(
-                  path: '/login',
-                  widget: const Login(),
-                ),
-                VWidget(
-                  path: '/register',
-                  widget: const Register(),
-                ),
-                VWidget(
-                  path: '/auth',
-                  widget: const Auth(),
-                ),
-              ]),
-        ]);
+      ),
+      initialUrl: '/auth',
+      routes: [
+        VGuard(
+          beforeEnter: (vRedirector) async =>
+              !AuthHandler.isUserLoggedIn() ? vRedirector.to(Auth.route) : null,
+          stackedRoutes: [
+            VWidget(
+              path: '/home',
+              widget: const Home(),
+            ),
+          ],
+        ),
+        VGuard(
+          beforeEnter: (vRedirector) async =>
+              AuthHandler.isUserLoggedIn() ? vRedirector.to(Home.route) : null,
+          stackedRoutes: [
+            VWidget(
+              path: '/login',
+              widget: const Login(),
+            ),
+            VWidget(
+              path: '/register',
+              widget: const Register(),
+            ),
+            VWidget(
+              path: '/auth',
+              widget: const Auth(),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
