@@ -1,9 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:onest/AuthHandler.dart';
 import 'package:onest/utils/Validators.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../AppColors.dart';
 import '../HexColor.dart';
+import '../class/User.dart';
+import 'CustomSnackBar.dart';
 import 'CustomTextField.dart';
 
 // Define a custom Form widget.
@@ -23,6 +30,44 @@ class LoginFormState extends State<LoginForm> {
     color: AppColors.primaryColor,
   );
 
+  Future login(String email, String password) async {
+    ScaffoldMessenger.of(context).clearSnackBars();
+
+    ScaffoldMessenger.of(context)
+        .showSnackBar(customSnackBar(message: "Connexion..."));
+
+    final req = await http.post(Uri.parse(dotenv.env['API']! + "/login"),
+        body: {"email": email, "password": password});
+
+    if (req.statusCode == 201) {
+      await Future.delayed(const Duration(milliseconds: 500),
+          () => ScaffoldMessenger.of(context).clearSnackBars());
+
+      final user = User.fromJson(jsonDecode(req.body));
+      AuthHandler.login(context, user);
+
+      return user;
+    } else if (req.statusCode == 401) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context)
+          .showSnackBar(customSnackBar(message: "Identifiants incorrectes"));
+    } else {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+          customSnackBar(message: "Une erreur serveur est survenue"));
+    }
+  }
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var window = MediaQuery.of(context).size;
@@ -35,6 +80,7 @@ class LoginFormState extends State<LoginForm> {
             context,
             Icons.email,
             "Email",
+            emailController,
             (String value) {
               if (!value.isValidEmail()) {
                 return 'Email invalide';
@@ -43,13 +89,21 @@ class LoginFormState extends State<LoginForm> {
               return null;
             },
           ),
-          customTextField(context, Icons.lock, "Mot de passe", (value) {
-            if (value.length < 8) {
-              return 'Minimum 8 caractères';
-            }
+          customTextField(
+            context,
+            Icons.lock,
+            "Mot de passe",
+            passwordController,
+            (value) {
+              if (value.length < 8) {
+                return 'Minimum 8 caractères';
+              }
 
-            return null;
-          }, paddingVertical: 30),
+              return null;
+            },
+            paddingVertical: 30,
+            obscureText: true,
+          ),
           SizedBox(
             width: window.width / 1.15,
             child: ElevatedButton(
@@ -66,9 +120,7 @@ class LoginFormState extends State<LoginForm> {
               ),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Connexion...')),
-                  );
+                  login(emailController.text, passwordController.text);
                 }
               },
               child: Text(

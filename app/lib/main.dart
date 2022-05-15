@@ -9,10 +9,13 @@ import 'pages/Home.dart';
 import 'pages/Login.dart';
 import 'pages/Register.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await dotenv.load(fileName: ".env");
+  await AuthHandler.init();
   runApp(const MyApp());
   initialization();
 }
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      initialUrl: '/auth',
+      initialUrl: AuthHandler.isUserLoggedIn() ? '/home' : '/auth',
       routes: [
         VGuard(
           beforeEnter: (vRedirector) async =>
