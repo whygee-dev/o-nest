@@ -11,8 +11,8 @@ export class CreateUserDto {
   @IsEmail({}, { message: 'Format email invalide' })
   email: string;
 
-  @Length(8, 20, {
-    message: 'Le mot de passe doit contenir entre 8 et 20 caractères',
+  @Length(8, 256, {
+    message: 'Le mot de passe doit contenir entre 8 et 256 caractères',
   })
   password: string;
 }
