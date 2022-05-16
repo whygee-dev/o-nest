@@ -39,8 +39,6 @@ class AuthHandler {
 
     final prefs = await SharedPreferences.getInstance();
 
-    print(user.toJson());
-
     prefs.setString("user", jsonEncode(user.toJson()));
 
     context.vRouter.to(Home.route);
