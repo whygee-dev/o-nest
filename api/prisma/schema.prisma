@@ -35,6 +35,7 @@ model Post {
   id          Int           @id @default(autoincrement())
   description String
   price       Float
+  createdAt   DateTime      @default(now())
   startDate   DateTime
   endDate     DateTime
   user        User          @relation(fields: [userId], references: [id])
