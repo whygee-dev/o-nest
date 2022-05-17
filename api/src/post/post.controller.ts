@@ -8,6 +8,10 @@ export class PostController {
 
   @Get('/feed')
   async feed(@Query() query: FeedDto) {
-    return this.postService.feed(+query.skip, +query.take);
+    return this.postService.feed(
+      query.skip ? +query.skip : undefined,
+      query.take ? +query.take : undefined,
+      query.search,
+    );
   }
 }

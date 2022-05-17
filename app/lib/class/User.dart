@@ -1,21 +1,29 @@
+import 'UserProfile.dart';
+
 class User {
   final String id;
   final String email;
   final String? fullname;
-  final String accessToken;
+  final String? accessToken;
+  final UserProfile? profile;
 
   const User(
       {required this.id,
       required this.email,
       this.fullname,
-      required this.accessToken});
+      this.accessToken,
+      this.profile});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-        id: json['user']['id'].toString(),
-        fullname: json['user']['fullname'],
-        email: json['user']['email'],
-        accessToken: json['access_token']);
+      id: json['user']['id'].toString(),
+      fullname: json['user']['fullname'],
+      email: json['user']['email'],
+      accessToken: json['access_token'],
+      profile: json["profile"] != null
+          ? UserProfile.fromJson(json["profile"])
+          : null,
+    );
   }
 
   Map<String, dynamic> toJson() {

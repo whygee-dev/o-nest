@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["interactiveTransactions"]
+  previewFeatures = ["interactiveTransactions", "fullTextSearch"]
 }
 
 datasource db {
@@ -12,7 +12,7 @@ model User {
   id       Int              @id @default(autoincrement())
   email    String           @unique
   fullname String?
-  password String
+  password String           
   profile  Profile?
   posts    Post[]
   animals  Animal[]

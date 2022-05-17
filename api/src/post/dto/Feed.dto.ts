@@ -1,4 +1,4 @@
-import { IsNumber, IsNumberString, IsOptional } from 'class-validator';
+import { IsNumberString, IsOptional, IsString } from 'class-validator';
 
 export class FeedDto {
   @IsOptional()
@@ -8,4 +8,8 @@ export class FeedDto {
   @IsOptional()
   @IsNumberString()
   skip?: number;
+
+  @IsOptional()
+  @IsString()
+  search?: string;
 }

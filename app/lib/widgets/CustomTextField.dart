@@ -9,7 +9,8 @@ Widget customTextField(BuildContext context, IconData icon, String hint,
     double paddingVertical = 0.0,
     double paddingHorizontal = 0.0,
     bool requiredField = true,
-    bool obscureText = false}) {
+    bool obscureText = false,
+    Function(String)? onChanged}) {
   var window = MediaQuery.of(context).size;
 
   return SizedBox(
@@ -55,6 +56,7 @@ Widget customTextField(BuildContext context, IconData icon, String hint,
 
           return validate(value);
         },
+        onChanged: onChanged,
       ),
     ),
   );
