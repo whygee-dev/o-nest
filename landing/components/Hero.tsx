@@ -16,8 +16,8 @@ const Hero = () => {
           accompagné
         </h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nullam dolor bibendum diam urna lacus, in elementum.Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Vivamus nullam dolor bibendum diam urna lacus, in elementum.
+          Des vacances d’été ? Un voyage d’affaire urgent ? Mais personne pour garder votre chien ou chat ? Ne vous en faites pas, O’nest a la
+          solution pour vous ! Cliquez et résolvez vos problèmes.
         </p>
         <Image src="/images/down-arrow.png" alt="Down logo" layout="fixed" width="20" height="100" />
         <DownloadButtons></DownloadButtons>

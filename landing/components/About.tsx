@@ -5,19 +5,19 @@ import CardPattern from "./CardPattern";
 
 const cards = [
   {
-    title: "Lorem ipsum",
+    title: "La communauté",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipselit. Consectetur adipiscing elit.",
+      "Les annonces et les réponses sont faites entre passionnés des chiens et chats. Vous n’avez aucune crainte à avoir pour votre compagnon.",
   },
   {
-    title: "Lorem ipsum",
+    title: "Les tarifs",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipselit. Consectetur adipiscing elit.",
+      "Les tarifs sont décidés entre particuliers, ce qui permet d’avoir des prix très avantageux. Nous fixons un seuil maximum pour assurer des offres aux utilisateurs ayant un revenu décent.",
   },
   {
-    title: "Lorem ipsum",
+    title: "Géolocalisation",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipselit. Consectetur adipiscing elit.",
+      "Vous pouvez restreindre vos annnonces à une zone spécifique et ainsi créer votre propre réseau. O’nest vous permet de trouver l’offre appropriée à votre situation géographique.",
   },
 ];
 
@@ -39,7 +39,7 @@ const About = () => {
       </div>
 
       <div className={styles.rightContent}>
-        <h1>Lorem ipsum dolor</h1>
+        <h1>Pourquoi O’nest ?</h1>
 
         <div className={styles.cards}>
           {cards.map((c, index) => {
